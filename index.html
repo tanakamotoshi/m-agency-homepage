@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>M Agency | 人・企業・サービスをつなぐ総合エージェンシー</title>
+  <meta name="description" content="株式会社M Agencyは、人・企業・サービスをつなぐ総合エージェンシーです。人材、留学、自動車、不動産、営業代行、海外進出支援まで、国内外の信頼できるネットワークを活かして最適なソリューションをご提案します。" />
+  <meta name="keywords" content="M Agency, ビジネスマッチング, 人材紹介, 留学サポート, 自動車, 不動産, 営業代行, 海外進出支援" />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#0a1b33" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="M Agency | Trusted Connections. Global Opportunities." />
+  <meta property="og:description" content="世界中の人・企業・サービスをつなぐ総合エージェンシー" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta property="og:site_name" content="M Agency" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@500;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "株式会社M Agency",
+    "alternateName": "M Agency Co., Ltd.",
+    "description": "人・企業・サービスをつなぐ総合エージェンシー",
+    "founder": { "@type": "Person", "name": "田中 元士" },
+    "knowsAbout": ["Human Resources", "Study Abroad", "Automobile", "Sales Agency", "Real Estate", "Business Matching"]
+  }
+  </script>
+</head>
+<body>
+  <a href="#main" class="skip-link" data-i18n="skipLink">本文へスキップ</a>
+
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a href="#top" class="brand" aria-label="M Agency home">
+        <span class="brand-logo-wrap">
+          <img src="assets/logo.png" alt="M Agency ロゴ" class="brand-logo" width="52" height="52" />
+        </span>
+        <span class="brand-copy">
+          <strong>株式会社M Agency</strong>
+          <small>M Agency Co., Ltd.</small>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navPanel" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="nav-panel" id="navPanel">
+          <a href="#about" data-i18n="navAbout">About</a>
+          <a href="#services" data-i18n="navServices">Services</a>
+          <a href="#network" data-i18n="navNetwork">Network</a>
+          <a href="#why-us" data-i18n="navWhyUs">Why Us</a>
+          <a href="#achievements" data-i18n="navAchievements">Results</a>
+          <a href="#faq" data-i18n="navFaq">FAQ</a>
+          <a href="#contact" class="nav-cta" data-i18n="navContact">Contact</a>
+        </div>
+      </nav>
+
+      <div class="lang-switch" role="group" aria-label="Language switcher">
+        <button class="lang-btn active" data-lang="ja">JP</button>
+        <span>|</span>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow" data-i18n="heroEyebrow">Integrated Business Matching Agency</p>
+          <h1 class="hero-title">
+            <span data-i18n="heroTitleLine1">信頼をつなぎ、</span>
+            <span data-i18n="heroTitleLine2">世界で機会を創る。</span>
+          </h1>
+          <p class="hero-sub" data-i18n="heroSub">国内外の企業・専門家・サービスを結び、最適なビジネスマッチングを実現する総合エージェンシー。</p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary" data-i18n="ctaConsultation">無料相談</a>
+            <a href="#contact" class="btn btn-secondary" data-i18n="ctaContact">お問い合わせ</a>
+          </div>
+        </div>
+
+        <div class="hero-panel reveal">
+          <div class="hero-panel-inner">
+            <div class="hero-panel-brand">
+              <img src="assets/logo.png" alt="M Agency" class="hero-panel-logo" width="84" height="84" />
+              <div>
+                <p class="panel-label">Mission</p>
+                <p class="panel-title">Connect People.<br />Connect Business.<br />Connect the World.</p>
+              </div>
+            </div>
+            <div class="hero-metrics" id="heroMetrics"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section intro-band">
+      <div class="container intro-band-inner reveal">
+        <p>Connect People.</p>
+        <span aria-hidden="true">—</span>
+        <p>Connect Business.</p>
+        <span aria-hidden="true">—</span>
+        <p>Connect the World.</p>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div class="about-photo reveal">
+          <div class="about-photo-frame">
+            <img src="assets/ceo-optimized.jpg" alt="代表取締役 田中 元士" class="about-photo-img" loading="lazy" />
+          </div>
+          <div class="about-photo-meta">
+            <span data-i18n="ceoPosition">代表取締役</span>
+            <strong data-i18n="ceoName">田中 元士</strong>
+          </div>
+        </div>
+
+        <div class="about-content reveal">
+          <p class="section-kicker" data-i18n="aboutKicker">About Us</p>
+          <h2 data-i18n="aboutTitle">株式会社M Agencyについて</h2>
+          <p class="lead" data-i18n="aboutBody">M Agencyは「人・企業・サービスをつなぐ総合エージェンシー」です。世界中の信頼できる企業や専門家とお客様を結び付け、最適なソリューションを設計・提案します。</p>
+
+          <article class="message-card">
+            <p data-i18n="aboutMessage">私たちは、ただ紹介するだけの会社ではありません。一つひとつのご相談に対して、最も適した人・企業・サービスを見極め、長期的に価値を生むつながりへと育てます。</p>
+            <footer>
+              <strong data-i18n="ceoName">田中 元士</strong>
+              <span data-i18n="ceoPosition">代表取締役</span>
+            </footer>
+          </article>
+
+          <div class="about-points">
+            <article class="about-card">
+              <span class="card-label">Mission</span>
+              <p>Connect People.<br />Connect Business.<br />Connect the World.</p>
+            </article>
+            <article class="about-card">
+              <span class="card-label">Vision</span>
+              <p data-i18n="visionText">世界中で最も信頼されるビジネスマッチング企業になる。</p>
+            </article>
+          </div>
+
+          <div class="values-wrap">
+            <span class="card-label" data-i18n="valueLabel">Core Value</span>
+            <ul class="value-list" id="valueList"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="services">
+      <div class="container">
+        <div class="section-head center reveal">
+          <p class="section-kicker" data-i18n="servicesKicker">Services</p>
+          <h2 data-i18n="servicesTitle">6つの事業領域</h2>
+          <p data-i18n="servicesLead">事業領域を明確に整理し、はじめて訪れる方にも分かりやすい構成にしています。</p>
+        </div>
+        <div class="services-grid" id="servicesGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="network">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="section-kicker" data-i18n="networkKicker">Global Partner Network</p>
+          <h2 data-i18n="networkTitle">提携企業ネットワーク</h2>
+          <p data-i18n="networkLead">提携企業ロゴをカテゴリごとに整理し、今後の追加・更新にも対応しやすい構造です。</p>
+        </div>
+        <div class="partner-tabs" id="partnerTabs"></div>
+        <div class="partner-grid" id="partnerGrid"></div>
+        <p class="network-note reveal" data-i18n="networkNote">提携企業データはCMSや管理画面、または設定ファイルで管理しやすい構成を前提にしています。</p>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="why-us">
+      <div class="container">
+        <div class="section-head center reveal">
+          <p class="section-kicker" data-i18n="whyKicker">Why Choose Us</p>
+          <h2 data-i18n="whyTitle">選ばれる理由</h2>
+        </div>
+        <div class="reasons-grid" id="reasonsGrid"></div>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="achievements">
+      <div class="container">
+        <div class="section-head center reveal light">
+          <p class="section-kicker" data-i18n="achievementsKicker">Achievements</p>
+          <h2 data-i18n="achievementsTitle">数字で伝える信頼</h2>
+          <p data-i18n="achievementsLead">数値実績は後から差し替えやすい構造で設計しています。</p>
+        </div>
+        <div class="metrics-grid" id="metricsGrid"></div>
+        <article class="advisor-card reveal">
+          <span class="card-label" data-i18n="advisorLabel">Advisor</span>
+          <h3 data-i18n="advisorName">岩橋綾士（Iwahashi Ayato）</h3>
+          <ul>
+            <li data-i18n="advisorRole1">株式会社キャリアコネクト 代表取締役</li>
+            <li data-i18n="advisorRole2">株式会社Agent Sun 取締役</li>
+            <li data-i18n="advisorRole3">株式会社ミトミト 取締役</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="testimonials">
+      <div class="container">
+        <div class="section-head center reveal">
+          <p class="section-kicker" data-i18n="testimonialsKicker">Testimonials</p>
+          <h2 data-i18n="testimonialsTitle">お客様の声</h2>
+        </div>
+        <div class="testimonials-grid" id="testimonialsGrid"></div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="faq">
+      <div class="container faq-grid">
+        <div class="section-head reveal">
+          <p class="section-kicker">FAQ</p>
+          <h2 data-i18n="faqTitle">よくある質問</h2>
+        </div>
+        <div class="faq-list" id="faqList"></div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-copy reveal">
+          <p class="section-kicker" data-i18n="contactKicker">Contact</p>
+          <h2 data-i18n="contactTitle">まずはお気軽にご相談ください</h2>
+          <p data-i18n="contactLead">個人のお客様から法人企業まで、目的や状況に合わせて最適なパートナーをご提案します。</p>
+          <dl class="contact-list">
+            <dt data-i18n="contactPoint1Title">対応領域</dt>
+            <dd data-i18n="contactPoint1Body">人材・留学・自動車・不動産・営業代行・海外進出支援</dd>
+            <dt data-i18n="contactPoint2Title">対応言語</dt>
+            <dd data-i18n="contactPoint2Body">日本語 / English（将来的にDeutsch追加可能）</dd>
+          </dl>
+        </div>
+
+        <form class="contact-form reveal" id="contactForm" novalidate>
+          <div class="field-grid">
+            <label>
+              <span data-i18n="formName">氏名</span>
+              <input type="text" name="name" required data-ph-ja="田中 太郎" data-ph-en="Taro Tanaka" />
+            </label>
+            <label>
+              <span data-i18n="formCompany">会社名</span>
+              <input type="text" name="company" data-ph-ja="株式会社〇〇" data-ph-en="Company Name" />
+            </label>
+          </div>
+          <div class="field-grid">
+            <label>
+              <span data-i18n="formEmail">メールアドレス</span>
+              <input type="email" name="email" required placeholder="info@example.com" />
+            </label>
+            <label>
+              <span data-i18n="formPhone">電話番号</span>
+              <input type="tel" name="phone" placeholder="090-1234-5678" />
+            </label>
+          </div>
+          <label>
+            <span data-i18n="formInquiry">相談内容</span>
+            <textarea name="message" rows="6" required data-ph-ja="ご相談内容をご記入ください" data-ph-en="Please describe your inquiry"></textarea>
+          </label>
+          <button type="submit" class="btn btn-primary full" data-i18n="formSubmit">送信する</button>
+          <p class="form-note" data-i18n="formNote">※ 実運用時はフォーム送信機能・スパム対策・完了画面を実装してください。</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <span class="footer-logo-wrap">
+          <img src="assets/logo.png" alt="M Agency" class="footer-logo" width="64" height="64" />
+        </span>
+        <div>
+          <p class="footer-name">株式会社M Agency</p>
+          <p class="footer-tag" data-i18n="footerTag">人・企業・サービスをつなぐ総合エージェンシー</p>
+        </div>
+      </div>
+      <div>
+        <h3 data-i18n="footerCompany">会社概要</h3>
+        <ul class="footer-list">
+          <li data-i18n="footerCeo">代表取締役 田中 元士</li>
+          <li data-i18n="footerBusiness">人材 / 留学 / 自動車 / 営業代行 / 不動産 / ビジネスマッチング</li>
+          <li data-i18n="footerAddress">所在地：準備中</li>
+          <li data-i18n="footerContact">お問い合わせ先：準備中</li>
+        </ul>
+      </div>
+      <div>
+        <h3>SNS</h3>
+        <ul class="footer-list">
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">LinkedIn</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 data-i18n="footerPolicy">Legal</h3>
+        <ul class="footer-list">
+          <li><a href="#" data-i18n="footerPrivacy">プライバシーポリシー</a></li>
+          <li><a href="#" data-i18n="footerTerms">利用規約</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <small>© <span id="year"></span> M Agency Co., Ltd. All rights reserved.</small>
+    </div>
+  </footer>
+
+  <a href="#top" class="back-top" id="backTop" aria-label="Back to top">↑</a>
+  <script src="script.js"></script>
+</body>
+</html>
