@@ -309,12 +309,17 @@ h2 { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
 }
 
 /* Partner Network: partner cards grid */
+/* PC: 常に2列 / スマホ: 1列（下部の @media (max-width: 768px) で上書き） */
 .partner-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 30px;
+  align-items: stretch; /* カードの高さを揃える */
 }
 .partner-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* グリッド内で高さを揃える */
   background: var(--white);
   padding: 30px;
   border-radius: 8px;
@@ -330,6 +335,7 @@ h2 { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
 .partner-card p {
   color: var(--text-light);
   margin-bottom: 15px;
+  flex-grow: 1; /* 説明文の長さに関わらず、ボタンをカード下端に揃える */
 }
 .partner-link {
   color: var(--accent);
@@ -364,7 +370,8 @@ h2 { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
 /* 公式サイトへ飛ぶボタン（partner-linkより目立たせたい場合はこちらを使う） */
 .partner-visit-btn {
   display: inline-block;
-  margin-top: 8px;
+  align-self: flex-start; /* flex化したカード内でボタン幅がコンテンツ幅のままになるように */
+  margin-top: auto; /* 説明文の長さに関わらずカード下端に揃える */
   padding: 8px 20px;
   border: 2px solid var(--primary);
   border-radius: 4px;
@@ -413,6 +420,7 @@ input, textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-rad
 /* Responsive */
 @media (max-width: 768px) {
   .hero-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+  .partner-grid { grid-template-columns: 1fr; }
   .nav-panel { display: none; }
   .nav-toggle { display: block; background: none; border: none; font-size: 1.5rem; color: var(--primary); }
   .footer-grid { grid-template-columns: 1fr; }
