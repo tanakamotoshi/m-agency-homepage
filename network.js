@@ -1,20 +1,65 @@
 (() => {
   const lang = document.documentElement.lang === 'en' ? 'en' : 'ja';
-  const labels = lang === 'ja' ? {all:'すべて',official:'公式サイトを見る',consult:'M Agencyに相談する',guide:'この会社が自分に合うか知りたい方、紹介をご希望の方はM Agencyへご相談ください。',empty:'該当する企業はまだ登録されていません。'} : {all:'All',official:'Official website',consult:'Ask M Agency',guide:'If you would like to know whether this company is right for you, or would like an introduction, please contact M Agency.',empty:'No companies are registered in this category yet.'};
-  const partners = (window.M_AGENCY_PARTNERS || []).filter(p => p.visible).sort((a,b) => a.order-b.order);
-  const categories = (window.M_AGENCY_CATEGORIES || []);
-  const tools = document.querySelector('[data-network-filters]');
+  const labels = lang === 'ja'
+    ? { all: 'すべて', japan: '🇯🇵 日本', overseas: '🌍 海外', official: '公式サイト', consult: 'M Agencyに相談する', empty: '条件に合う提携企業・サービスはまだ登録されていません。' }
+    : { all: 'All', japan: '🇯🇵 Japan', overseas: '🌍 Overseas', official: 'Official website', consult: 'Ask M Agency', empty: 'No partners or services match these filters yet.' };
+  const partners = (window.M_AGENCY_PARTNERS || []).filter(partner => partner.visible).sort((a, b) => a.order - b.order);
+  const macroCategories = window.M_AGENCY_MACRO_CATEGORIES || [];
+  const fineCategories = window.M_AGENCY_CATEGORIES || [];
+  const regionFilters = document.querySelector('[data-region-filters]');
+  const categoryFilters = document.querySelector('[data-category-filters]');
   const grid = document.querySelector('[data-partner-grid]');
-  function render(category='all') {
-    const list = category === 'all' ? partners : partners.filter(p => p.categories.includes(category));
-    grid.innerHTML = list.length ? list.map(p => {
-      const categoryNames = p.categories.map(id => (window.M_AGENCY_CATEGORIES.find(c => c.id === id) || {name:{[lang]:id}}).name[lang]);
-      return `<article class="partner-card"><img src="${p.logo}" alt="${p.name[lang]}" loading="lazy"><h2>${p.name[lang]}</h2><div class="tags">${categoryNames.map(x=>`<span class="tag">${x}</span>`).join('')}<span class="tag">${p.region[lang]}</span></div><p>${p.description[lang]}</p><div class="tags">${p.strengths[lang].map(x=>`<span class="tag">${x}</span>`).join('')}</div><p class="partner-guidance">${labels.guide}</p><div class="actions"><a class="btn btn-secondary" href="${p.officialUrl}" target="_blank" rel="noopener noreferrer">${labels.official}</a><a class="btn btn-primary" href="/${lang}/?company=${encodeURIComponent(p.name[lang])}#contact">${labels.consult}</a></div></article>`;
-    }).join('') : `<p>${labels.empty}</p>`;
+  const count = document.querySelector('[data-result-count]');
+  const clearButton = document.querySelector('[data-clear-filters]');
+  if (!regionFilters || !categoryFilters || !grid) return;
+
+  const state = { region: 'all', category: 'all' };
+  const localized = value => value?.[lang] || value?.ja || '';
+  const categoryName = id => localized(fineCategories.find(category => category.id === id)?.name) || id;
+  const macroCategoryName = id => localized(macroCategories.find(category => category.id === id)?.name) || id;
+  const filterButton = (id, label, type) => {
+    const active = state[type] === id;
+    return `<button class="filter-button${active ? ' is-active' : ''}" type="button" data-filter-type="${type}" data-filter-value="${id}" aria-pressed="${active}">${label}</button>`;
+  };
+
+  function renderFilters() {
+    regionFilters.innerHTML = [filterButton('all', labels.all, 'region'), filterButton('japan', labels.japan, 'region'), filterButton('overseas', labels.overseas, 'region')].join('');
+    categoryFilters.innerHTML = [filterButton('all', labels.all, 'category'), ...macroCategories.map(category => filterButton(category.id, localized(category.name), 'category'))].join('');
   }
-  const requestedCategory = new URLSearchParams(location.search).get('category');
-  const initialCategory = categories.some(c => c.id === requestedCategory) ? requestedCategory : 'all';
-  tools.innerHTML = [{id:'all',name:{[lang]:labels.all}},...categories].map(c=>`<button class="filter-button${c.id===initialCategory?' is-active':''}" type="button" data-category="${c.id}">${c.name[lang]}</button>`).join('');
-  tools.addEventListener('click', e => { const button=e.target.closest('[data-category]'); if(!button)return; tools.querySelectorAll('button').forEach(b=>b.classList.remove('is-active')); button.classList.add('is-active'); render(button.dataset.category); });
-  render(initialCategory);
+
+  function partnerCard(partner) {
+    const macroNames = (partner.macroCategories || []).map(macroCategoryName);
+    const fineNames = (partner.categories || []).map(categoryName);
+    const consultationUrl = `/${lang}/?company=${encodeURIComponent(localized(partner.name))}#contact`;
+    return `<article class="partner-card">
+      <div class="partner-logo"><img src="${partner.logo}" alt="${localized(partner.name)}" loading="lazy"></div>
+      <div class="partner-card-body">
+        <div class="partner-meta"><span>${localized(partner.region)}</span>${macroNames.map(name => `<span>${name}</span>`).join('')}</div>
+        <h2>${localized(partner.name)}</h2>
+        <p class="partner-description">${localized(partner.description)}</p>
+        <div class="partner-fine-categories">${fineNames.map(name => `<span>${name}</span>`).join('')}</div>
+        <div class="actions"><a class="btn btn-primary" href="${consultationUrl}">${labels.consult}</a><a class="btn btn-secondary" href="${partner.officialUrl}" target="_blank" rel="noopener noreferrer">${labels.official}<span aria-hidden="true">↗</span></a></div>
+      </div>
+    </article>`;
+  }
+
+  function render() {
+    const visible = partners.filter(partner => (state.region === 'all' || partner.regionType === state.region) && (state.category === 'all' || (partner.macroCategories || []).includes(state.category)));
+    if (count) count.textContent = visible.length;
+    grid.className = `partner-grid partner-grid-count-${Math.min(visible.length, 3)}`;
+    grid.innerHTML = visible.length ? visible.map(partnerCard).join('') : `<p class="network-empty">${labels.empty}</p>`;
+  }
+
+  function selectFilter(event) {
+    const button = event.target.closest('[data-filter-type]');
+    if (!button) return;
+    state[button.dataset.filterType] = button.dataset.filterValue;
+    renderFilters();
+    render();
+  }
+  regionFilters.addEventListener('click', selectFilter);
+  categoryFilters.addEventListener('click', selectFilter);
+  clearButton?.addEventListener('click', () => { state.region = 'all'; state.category = 'all'; renderFilters(); render(); });
+  renderFilters();
+  render();
 })();
