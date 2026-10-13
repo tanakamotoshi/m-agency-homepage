@@ -365,13 +365,14 @@ html[lang="ja"] #story .story-copy{
 @media(max-width:620px){
   .business-network-page .network-hero{padding:58px 0 50px}
   .business-network-page .network-hero .container,.business-network-page .network-directory>.container{width:min(calc(100% - 28px),980px)}
-  .business-network-page .network-hero h1{font-size:clamp(2rem,10vw,2.55rem)}
-  html[lang="ja"] .business-network-page .network-hero h1{font-size:1.78rem;white-space:nowrap}
+  .business-network-page .network-hero h1{max-width:100%;font-size:clamp(1.72rem,8vw,2.1rem);overflow-wrap:normal}
+  html[lang="ja"] .business-network-page .network-hero h1{font-size:1.58rem;white-space:nowrap}
   .business-network-page .network-directory{padding:52px 0 76px}
   .business-network-page .network-filter-group{padding:25px 0}
   .business-network-page .network-tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%}
   .business-network-page [data-region-filters]{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .business-network-page .filter-button{padding:8px 6px;font-size:.78rem}
+  .business-network-page .filter-button{width:100%;min-width:0;padding:8px 6px;font-size:.78rem;white-space:normal}
+  .business-network-page [data-region-filters] .filter-button{white-space:nowrap}
   .business-network-page .network-results-head{margin-top:40px}
   .business-network-page .partner-grid,.business-network-page .partner-grid-count-1,.business-network-page .partner-grid-count-2{grid-template-columns:1fr}
   .business-network-page .partner-logo{min-height:150px;padding:24px}
